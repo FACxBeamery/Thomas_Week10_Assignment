@@ -7,23 +7,16 @@ const App = () => {
   React.useEffect(() => {
     const getJobs = async () => {
       try {
-        const response = await axios.get(
-          "https://cors-anywhere.herokuapp.com/http://localhost:3001/jobs"
-        );
-        console.log("response inside function: ", response);
-        setJobPosts(response);
+        const response = await axios.get("http://localhost:3001/jobs");
+        // console.log("response inside function: ", response);
+        const jobPostsArray = response.data;
+        setJobPosts(jobPostsArray);
       } catch (error) {
         console.error(error);
       }
     };
 
     getJobs();
-
-    // getJobs()
-    //   .then(jobPosts => console.log("job posts:", jobPosts))
-    //   .catch(error => {
-    //     throw new Error(error.message);
-    //   });
   }, []);
 
   return (
