@@ -7,7 +7,7 @@ const corsByPass = (req, res, next) => {
     "Access-Control-Allow-Methods",
     "GET,HEAD,PUT,PATCH,POST,DELETE"
   );
-  res.setHeader("Access-Control-Allow-Origin", req.header("origin"));
+  res.setHeader("Access-Control-Allow-Origin", "*");
 
   next();
 };

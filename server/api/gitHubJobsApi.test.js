@@ -72,7 +72,7 @@ test("Test whether cleanGitHubJobsApiResponse() cleans a raw API call response a
   expect(cleanGitHubJobsApiResponse(rawResponse)).toBe(expected);
 });
 
-test("Test whether cleanGitHubJobsApiResponse() cleans a raw API call response as expected.", () => {
+test("Test whether cleanGitHubJobsApiResponse() returns null when the provided argument is not an array", () => {
   const rawResponse = {
     id: "6bbe0cd6-95fd-461c-a194-746872465b7e",
     type: "Contract",
@@ -90,6 +90,12 @@ test("Test whether cleanGitHubJobsApiResponse() cleans a raw API call response a
     company_logo:
       "https://jobs.github.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0YxIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2990a63e7cfc9a32e897832fc947ad89a0e2aef4/il-logo.png"
   };
+
+  expect(cleanGitHubJobsApiResponse(rawResponse)).toBeNull();
+});
+
+test("Test whether cleanGitHubJobsApiResponse() returns when the provided argument is an empty array.", () => {
+  const rawResponse = [];
 
   expect(cleanGitHubJobsApiResponse(rawResponse)).toBeNull();
 });
