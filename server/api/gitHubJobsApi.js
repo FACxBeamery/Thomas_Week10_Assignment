@@ -22,17 +22,19 @@ const gitHubJobsApi = userLocation => {
     });
 };
 
-gitHubJobsApi("London");
+const cleanGitHubJobsApiResponse = apiResponse => {
+  if (Array.isArray(apiResponse) && apiResponse.length > 0) {
+    const cleanedJobPosts = apiResponse.map(element => {
+      const cleanedSinglePost = { ...element };
+      delete cleanedSinglePost.description;
+      delete cleanedSinglePost.id;
 
-const cleanGitHubJobsApi = apiResponse => {
-  const cleanedJobPosts = apiResponse.map(element => {
-    const cleanedSinglePost = { ...element };
-    delete cleanedSinglePost.description;
-    delete cleanedSinglePost.id;
-
-    return cleanedSinglePost;
-  });
-  return cleanedJobPosts;
+      return cleanedSinglePost;
+    });
+    return cleanedJobPosts;
+  } else {
+    return null;
+  }
 };
 
-module.exports = { gitHubJobsApi, cleanGitHubJobsApi };
+module.exports = { gitHubJobsApi, cleanGitHubJobsApiResponse };

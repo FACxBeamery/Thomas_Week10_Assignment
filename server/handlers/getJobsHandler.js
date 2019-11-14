@@ -1,12 +1,12 @@
 const {
   gitHubJobsApi,
-  cleanGitHubJobsApi
+  cleanGitHubJobsApiResponse
 } = require("../api/gitHubJobsApi.js");
 
-const retrieveJobPosts = async userLocation => {
+const retrieveCleanedJobPosts = async userLocation => {
   try {
     const gitHubJobsApiResponseRaw = await gitHubJobsApi(userLocation);
-    const gitHubJobsApiResponseCleaned = cleanGitHubJobsApi(
+    const gitHubJobsApiResponseCleaned = cleanGitHubJobsApiResponse(
       gitHubJobsApiResponseRaw
     );
 
@@ -17,7 +17,7 @@ const retrieveJobPosts = async userLocation => {
 };
 
 const getJobsHandler = (request, response) => {
-  retrieveJobPosts("London")
+  retrieveCleanedJobPosts("London")
     .then(jobPosts => {
       return response.status(200).send(jobPosts);
     })
