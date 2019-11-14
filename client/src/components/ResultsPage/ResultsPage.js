@@ -1,9 +1,11 @@
 import React from "react";
 import axios from "axios";
 // import styles from "./ResultsPage.module.css";
+import JobCard from "./JobCard.js";
 
-const ResultsPage = ({ setPageState, userInput }) => {
+const ResultsPage = ({ setPageState, userInput, setUserInput }) => {
   const [jobPosts, setJobPosts] = React.useState([]);
+
   React.useEffect(() => {
     const getJobs = async () => {
       try {
@@ -23,14 +25,21 @@ const ResultsPage = ({ setPageState, userInput }) => {
     };
 
     getJobs();
-  }, []);
+  }, [userInput]);
 
   const handleClick = () => {
     setPageState(0);
+    setUserInput("");
+    setJobPosts([]);
   };
+
+  const jobsToRender = jobPosts.map(element => {
+    return <JobCard jobData={element} />;
+  });
 
   return (
     <>
+      <div>{[jobsToRender]}</div>
       <form>
         <input
           type="button"

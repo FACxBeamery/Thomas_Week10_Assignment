@@ -1,6 +1,6 @@
 import React from "react";
-import SearchPage from "./SearchPage.js";
-import ResultsPage from "./ResultsPage.js";
+import SearchPage from "./SearchPage/SearchPage.js";
+import ResultsPage from "./ResultsPage/ResultsPage.js";
 
 const App = () => {
   const [pageState, setPageState] = React.useState(0);
@@ -27,7 +27,11 @@ const App = () => {
         <SearchPage setPageState={setPageState} setUserInput={setUserInput} />
       )) ||
         (pageState === 1 && (
-          <ResultsPage setPageState={setPageState} userInput={userInput} />
+          <ResultsPage
+            setPageState={setPageState}
+            userInput={userInput}
+            setUserInput={setUserInput}
+          />
         ))}
     </main>
   );
