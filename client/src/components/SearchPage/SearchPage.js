@@ -23,6 +23,7 @@ const SearchPage = ({ setPageState, setUserInput }) => {
           type="text"
           placeholder="Enter city name"
           onInput={handleInput}
+          // add an onkey and check if it's an enter key, if yes, run handleClick
         ></input>
         <input
           type="button"

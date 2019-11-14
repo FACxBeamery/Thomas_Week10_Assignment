@@ -27,7 +27,6 @@ const cleanGitHubJobsApiResponse = apiResponse => {
     const cleanedJobPosts = apiResponse.map(element => {
       const cleanedSinglePost = { ...element };
       delete cleanedSinglePost.description;
-      delete cleanedSinglePost.id;
 
       return cleanedSinglePost;
     });

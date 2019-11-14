@@ -17,7 +17,8 @@ const retrieveCleanedJobPosts = async userLocation => {
 };
 
 const getJobsHandler = (request, response) => {
-  retrieveCleanedJobPosts("London")
+  const userChosenCity = request.query.location;
+  retrieveCleanedJobPosts(userChosenCity)
     .then(jobPosts => {
       return response.status(200).send(jobPosts);
     })

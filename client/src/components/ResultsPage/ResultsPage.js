@@ -29,12 +29,10 @@ const ResultsPage = ({ setPageState, userInput, setUserInput }) => {
 
   const handleClick = () => {
     setPageState(0);
-    setUserInput("");
-    setJobPosts([]);
   };
 
   const jobsToRender = jobPosts.map(element => {
-    return <JobCard jobData={element} />;
+    return <JobCard key={element.id} jobData={element} />;
   });
 
   return (
