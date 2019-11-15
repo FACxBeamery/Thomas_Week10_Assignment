@@ -32,7 +32,7 @@ const cleanGitHubJobsApiResponse = apiResponse => {
     });
     return cleanedJobPosts;
   } else {
-    return null;
+    return [];
   }
 };
 

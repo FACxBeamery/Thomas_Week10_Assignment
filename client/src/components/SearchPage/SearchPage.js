@@ -29,6 +29,7 @@ const SearchPage = ({ setPageState, setUserInput }) => {
           type="button"
           value="Bring me jobs!"
           onClick={handleClick}
+          data-testid="search-button"
         ></input>
       </form>
     </>

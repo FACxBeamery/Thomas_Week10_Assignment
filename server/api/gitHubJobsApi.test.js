@@ -1,4 +1,9 @@
-const { cleanGitHubJobsApiResponse } = require("./gitHubJobsApi.js");
+const {
+  gitHubJobsApi,
+  cleanGitHubJobsApiResponse
+} = require("./gitHubJobsApi.js");
+const axios = require("axios");
+const gitHubJobsApiDummyResponse = require("./gitHubJobsApiDummyResponse.js");
 
 test("Test whether cleanGitHubJobsApiResponse() cleans a raw API call response as expected.", () => {
   const rawResponse = [
@@ -40,6 +45,7 @@ test("Test whether cleanGitHubJobsApiResponse() cleans a raw API call response a
 
   const expected = [
     {
+      id: "6bbe0cd6-95fd-461c-a194-746872465b7e",
       type: "Contract",
       url:
         "https://jobs.github.com/positions/6bbe0cd6-95fd-461c-a194-746872465b7e",
@@ -54,6 +60,7 @@ test("Test whether cleanGitHubJobsApiResponse() cleans a raw API call response a
         "https://jobs.github.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0YxIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2990a63e7cfc9a32e897832fc947ad89a0e2aef4/il-logo.png"
     },
     {
+      id: "36b9af5b-fcc0-457d-b7f3-efc61625bbdb",
       type: "Full Time",
       url:
         "https://jobs.github.com/positions/36b9af5b-fcc0-457d-b7f3-efc61625bbdb",
@@ -69,10 +76,10 @@ test("Test whether cleanGitHubJobsApiResponse() cleans a raw API call response a
     }
   ];
 
-  expect(cleanGitHubJobsApiResponse(rawResponse)).toBe(expected);
+  expect(cleanGitHubJobsApiResponse(rawResponse)).toStrictEqual(expected);
 });
 
-test("Test whether cleanGitHubJobsApiResponse() returns null when the provided argument is not an array", () => {
+test("Test whether cleanGitHubJobsApiResponse() returns an empty array when the provided argument is not an array", () => {
   const rawResponse = {
     id: "6bbe0cd6-95fd-461c-a194-746872465b7e",
     type: "Contract",
@@ -91,11 +98,32 @@ test("Test whether cleanGitHubJobsApiResponse() returns null when the provided a
       "https://jobs.github.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0YxIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2990a63e7cfc9a32e897832fc947ad89a0e2aef4/il-logo.png"
   };
 
-  expect(cleanGitHubJobsApiResponse(rawResponse)).toBeNull();
+  expect(cleanGitHubJobsApiResponse(rawResponse)).toBe([]);
 });
 
-test("Test whether cleanGitHubJobsApiResponse() returns when the provided argument is an empty array.", () => {
+test("Test whether cleanGitHubJobsApiResponse() returns an empty array when the provided argument is an empty array.", () => {
   const rawResponse = [];
 
-  expect(cleanGitHubJobsApiResponse(rawResponse)).toBeNull();
+  expect(cleanGitHubJobsApiResponse(rawResponse)).toBe([]);
 });
+
+// jest.mock("axios");
+
+// test("Mocking the external GitHub Jobs API call.", async () => {
+//   axios = jest.fn(() => Promise.resolve(gitHubJobsApiDummyResponse));
+
+//   axios.mockReturnValue(
+//     Promise.resolve(JSON.stringify(gitHubJobsApiDummyResponse))
+//   );
+
+//   await gitHubJobsApi("London");
+
+//   expect(axios).toHaveBeenCalledTimes(1);
+//   expect(axios).toHaveBeenCalledWith({
+//     method: "GET",
+//     url: "https://jobs.github.com/positions.json",
+//     params: {
+//       location: "London"
+//     }
+//   });
+// });

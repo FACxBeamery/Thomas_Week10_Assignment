@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 // import styles from "./ResultsPage.module.css";
 import JobCard from "./JobCard.js";
+import ReturnButton from "./ReturnButton.js";
+import JobPosts from "./JobPosts.js";
 
 const ResultsPage = ({ setPageState, userInput, setUserInput }) => {
   const [jobPosts, setJobPosts] = React.useState([]);
@@ -37,14 +39,8 @@ const ResultsPage = ({ setPageState, userInput, setUserInput }) => {
 
   return (
     <>
-      <div>{[jobsToRender]}</div>
-      <form>
-        <input
-          type="button"
-          value="Run a new search!"
-          onClick={handleClick}
-        ></input>
-      </form>
+      <ReturnButton handleClick={handleClick} />
+      <JobPosts jobsToRender={jobsToRender} />
     </>
   );
 };
