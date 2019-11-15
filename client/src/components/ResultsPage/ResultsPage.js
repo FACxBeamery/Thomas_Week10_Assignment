@@ -38,14 +38,19 @@ const ResultsPage = ({ setPageState, userInput }) => {
   });
 
   return (
-    <>
-      {jobPosts.length === 0 ? null : (
-        <div className={styles["results-container"]}>
-          <ReturnButton handleClick={handleClick} />
-          <JobPosts jobsToRender={jobsToRender} />
-        </div>
+    <div className={styles["results-container"]}>
+      <ReturnButton handleClick={handleClick} />
+      {jobPosts.length === 0 ? (
+        <>
+          <p>
+            If you are waiting a while, there may be no open jobs in this
+            particular city. Try expanding your search area.
+          </p>
+        </>
+      ) : (
+        <JobPosts jobsToRender={jobsToRender} />
       )}
-    </>
+    </div>
   );
 };
 
