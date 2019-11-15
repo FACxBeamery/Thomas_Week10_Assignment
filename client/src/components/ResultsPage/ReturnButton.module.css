@@ -1,0 +1,12 @@
+.return-button {
+  text-align: center;
+  border: none;
+  padding: 0.5rem 1rem;
+  background: #ed4e6e;
+  color: #000000;
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  margin: 1rem 0.25rem;
+  border-radius: 2px;
+}

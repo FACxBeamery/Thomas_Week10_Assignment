@@ -2,7 +2,7 @@ const {
   gitHubJobsApi,
   cleanGitHubJobsApiResponse
 } = require("./gitHubJobsApi.js");
-const axios = require("axios");
+const moxios = require("moxios");
 const gitHubJobsApiDummyResponse = require("./gitHubJobsApiDummyResponse.js");
 
 test("Test whether cleanGitHubJobsApiResponse() cleans a raw API call response as expected.", () => {
@@ -98,32 +98,11 @@ test("Test whether cleanGitHubJobsApiResponse() returns an empty array when the 
       "https://jobs.github.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0YxIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2990a63e7cfc9a32e897832fc947ad89a0e2aef4/il-logo.png"
   };
 
-  expect(cleanGitHubJobsApiResponse(rawResponse)).toBe([]);
+  expect(cleanGitHubJobsApiResponse(rawResponse)).toStrictEqual([]);
 });
 
 test("Test whether cleanGitHubJobsApiResponse() returns an empty array when the provided argument is an empty array.", () => {
   const rawResponse = [];
 
-  expect(cleanGitHubJobsApiResponse(rawResponse)).toBe([]);
+  expect(cleanGitHubJobsApiResponse(rawResponse)).toStrictEqual([]);
 });
-
-// jest.mock("axios");
-
-// test("Mocking the external GitHub Jobs API call.", async () => {
-//   axios = jest.fn(() => Promise.resolve(gitHubJobsApiDummyResponse));
-
-//   axios.mockReturnValue(
-//     Promise.resolve(JSON.stringify(gitHubJobsApiDummyResponse))
-//   );
-
-//   await gitHubJobsApi("London");
-
-//   expect(axios).toHaveBeenCalledTimes(1);
-//   expect(axios).toHaveBeenCalledWith({
-//     method: "GET",
-//     url: "https://jobs.github.com/positions.json",
-//     params: {
-//       location: "London"
-//     }
-//   });
-// });

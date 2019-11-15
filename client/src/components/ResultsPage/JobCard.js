@@ -22,7 +22,9 @@ const JobCard = ({ jobData }) => {
         {/* <p>{jobData.company}</p> */}
         <p>{jobData.type}</p>
         {/* <p>{`How to apply: ${jobData.how_to_apply}`}</p> */}
-        <a href={jobData.url}>Click to be taken to the original job posting!</a>
+        <a href={jobData.url} target="__blank">
+          Click to be taken to the original job posting!
+        </a>
         <p>{`Job posting created at: ${jobData.created_at}`}</p>
       </div>
     </article>

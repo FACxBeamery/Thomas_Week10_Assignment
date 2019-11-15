@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-// import styles from "./ResultsPage.module.css";
+import styles from "./ResultsPage.module.css";
 import JobCard from "./JobCard.js";
 import ReturnButton from "./ReturnButton.js";
 import JobPosts from "./JobPosts.js";
@@ -40,10 +40,10 @@ const ResultsPage = ({ setPageState, userInput }) => {
   return (
     <>
       {jobPosts.length === 0 ? null : (
-        <>
+        <div className={styles["results-container"]}>
           <ReturnButton handleClick={handleClick} />
           <JobPosts jobsToRender={jobsToRender} />
-        </>
+        </div>
       )}
     </>
   );

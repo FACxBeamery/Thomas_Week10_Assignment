@@ -36,6 +36,7 @@ const AutoComplete = ({ userInput, setUserInput, setPageState }) => {
 
   const handleTextKeyDown = event => {
     if (event.keyCode === 13) {
+      event.preventDefault();
       setShowOptions(false);
       setActiveOption(0);
       setUserInput(filteredOptions[activeOption]);
@@ -84,16 +85,18 @@ const AutoComplete = ({ userInput, setUserInput, setPageState }) => {
     } else {
       optionsList = (
         <div className={styles["no-options"]}>
-          <em>No option!</em>
+          <em>No autocomplete options!</em>
         </div>
       );
     }
   }
 
   return (
-    <>
+    <div className={styles["search-container"]}>
       <form>
-        <p>In which city shall I find jobs for you?</p>
+        <p className={styles["search-instruction"]}>
+          In which city shall I find jobs for you?
+        </p>
         <input
           type="text"
           className={styles["search-box"]}
@@ -104,13 +107,14 @@ const AutoComplete = ({ userInput, setUserInput, setPageState }) => {
         ></input>
         <input
           type="button"
-          className={styles["search-box"]}
+          value="Bring me the jobs!"
+          className={styles["search-button"]}
           onClick={handleButtonClick}
           data-testid="search-button"
         ></input>
       </form>
       {optionsList}
-    </>
+    </div>
   );
 };
 

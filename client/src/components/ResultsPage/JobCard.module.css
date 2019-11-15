@@ -3,11 +3,12 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  max-width: 600px;
+  max-width: 70vw;
   margin: 0.5rem 0rem;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border: 2px solid #000000;
   border-left: 10px solid #000000;
+  background-color: #ffffff;
 }
 
 .job-card__company-logo {
