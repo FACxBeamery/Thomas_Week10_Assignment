@@ -6,8 +6,14 @@
 4) To get the app running, return to the root folder again by running `cd ..`. Whilst in the root folder, run `npm run dev`. The app should be visible on http://localhost:3000.
 5) Enjoy using the app (requirement).
 
+## Testing
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Server: To run the server-side tests, whilst in the /server folder, run `npm run test`.
+Client: To run the client-side tests, whilst in the /client folder, run `npm test`.
+
+## The client
+
+This client was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
