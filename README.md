@@ -1,4 +1,23 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Installation
+
+1) Clone this repository.
+2) There is a package.json file in the root folder, as well as independent package.json files in each the /client and /server folders. Whilst in the root folder, run `cd client` to enter the /client folder. Then, run `npm i` to install the dependencies of the /client folder.
+3) Return to the root folder by running `cd ..` and like step 2), enter the /server folder by running `cd server` and subsequently, `npm i`. Steps 2) and 3) have been deprecated by running `npm run setup` in the root folder. However, this script is currently only experimental. 
+4) To get the app running, return to the root folder again by running `cd ..`. Whilst in the root folder, run `npm run dev`. The app should be visible on http://localhost:3000.
+5) Enjoy using the app (requirement).
+
+## Testing
+
+Server: To run the server-side tests, whilst in the /server folder, run `npm run test`.<br/>
+Client: To run the client-side tests, whilst in the /client folder, run `npm test`.
+
+## The server
+
+The server makes calls to an external api, [GitHub Jobs](https://jobs.github.com/api), to retrieve the job posts. Conveniently, this API doesn't require any API key for authorisation.
+
+## The client
+
+This client was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
