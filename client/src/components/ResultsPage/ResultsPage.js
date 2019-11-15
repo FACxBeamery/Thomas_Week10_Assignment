@@ -5,7 +5,7 @@ import JobCard from "./JobCard.js";
 import ReturnButton from "./ReturnButton.js";
 import JobPosts from "./JobPosts.js";
 
-const ResultsPage = ({ setPageState, userInput, setUserInput }) => {
+const ResultsPage = ({ setPageState, userInput }) => {
   const [jobPosts, setJobPosts] = React.useState([]);
 
   React.useEffect(() => {

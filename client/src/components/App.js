@@ -9,14 +9,14 @@ const App = () => {
   return (
     <main>
       {(pageState === 0 && (
-        <SearchPage setPageState={setPageState} setUserInput={setUserInput} />
+        <SearchPage
+          setPageState={setPageState}
+          userInput={userInput}
+          setUserInput={setUserInput}
+        />
       )) ||
         (pageState === 1 && (
-          <ResultsPage
-            setPageState={setPageState}
-            userInput={userInput}
-            setUserInput={setUserInput}
-          />
+          <ResultsPage setPageState={setPageState} userInput={userInput} />
         ))}
     </main>
   );

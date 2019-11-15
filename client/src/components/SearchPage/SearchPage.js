@@ -1,38 +1,14 @@
 import React from "react";
 // import styles from "./SerchPage.module.css";
+import AutoComplete from "./AutoComplete.js";
 
-const SearchPage = ({ setPageState, setUserInput }) => {
-  const handleClick = () => {
-    setPageState(1);
-  };
-
-  const handleInput = event => {
-    if (/[^A-zÀ-ú-]/gi.test(event.currentTarget.value)) {
-      event.currentTarget.value = event.currentTarget.value.replace(
-        /[^a-zA-Z\s]/,
-        ""
-      );
-    }
-    setUserInput(event.currentTarget.value);
-  };
+const SearchPage = ({ setPageState, userInput, setUserInput }) => {
   return (
-    <>
-      <form>
-        <p>In which city shall I find jobs for you?</p>
-        <input
-          type="text"
-          placeholder="Enter city name"
-          onInput={handleInput}
-          // add an onkey and check if it's an enter key, if yes, run handleClick
-        ></input>
-        <input
-          type="button"
-          value="Bring me jobs!"
-          onClick={handleClick}
-          data-testid="search-button"
-        ></input>
-      </form>
-    </>
+    <AutoComplete
+      userInput={userInput}
+      setUserInput={setUserInput}
+      setPageState={setPageState}
+    />
   );
 };
 
