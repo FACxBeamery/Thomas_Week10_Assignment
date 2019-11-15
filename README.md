@@ -8,7 +8,7 @@
 
 ## Testing
 
-Server: To run the server-side tests, whilst in the /server folder, run `npm run test`.
+Server: To run the server-side tests, whilst in the /server folder, run `npm run test`.<br/>
 Client: To run the client-side tests, whilst in the /client folder, run `npm test`.
 
 ## The client
