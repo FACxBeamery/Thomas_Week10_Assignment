@@ -39,8 +39,12 @@ const ResultsPage = ({ setPageState, userInput, setUserInput }) => {
 
   return (
     <>
-      <ReturnButton handleClick={handleClick} />
-      <JobPosts jobsToRender={jobsToRender} />
+      {jobPosts.length === 0 ? null : (
+        <>
+          <ReturnButton handleClick={handleClick} />
+          <JobPosts jobsToRender={jobsToRender} />
+        </>
+      )}
     </>
   );
 };

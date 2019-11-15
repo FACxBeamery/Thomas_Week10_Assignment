@@ -4,13 +4,18 @@ import styles from "./JobCard.module.css";
 const JobCard = ({ jobData }) => {
   return (
     <article className={styles["job-card"]}>
-      <a href={jobData.company_url}>
-        <img
-          src={jobData.company_logo}
-          className={styles["job-card__company-logo"]}
-          alt={`The logo of ${jobData.company}, who are offering the job.`}
-        />
-      </a>
+      {jobData.company_logo ? (
+        <a href={jobData.company_url}>
+          <img
+            src={jobData.company_logo}
+            className={styles["job-card__company-logo"]}
+            alt={`The logo of ${jobData.company}, who are offering the job.`}
+          />
+        </a>
+      ) : (
+        <p>No company logo available</p>
+      )}
+
       <div>
         <p>{jobData.title}</p>
         <p>{jobData.location}</p>
